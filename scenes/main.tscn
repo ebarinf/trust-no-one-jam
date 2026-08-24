@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://155xx7s6y6ta"]
+
+[ext_resource type="PackedScene" uid="uid://nho7770bp1dp" path="res://models/bar_counter.glb" id="1_o5qli"]
+
+[node name="Main" type="Node3D" unique_id=894062825]
+
+[node name="bar_counter" parent="." unique_id=865865762 instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6796751, 0, 0.12329814)
+
+[node name="bartender" type="Node3D" parent="." unique_id=1006972906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1578166, 0.56881166, 0)
+
+[node name="Camera3D" type="Camera3D" parent="bartender" unique_id=815872212]
