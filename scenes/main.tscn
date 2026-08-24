@@ -28,10 +28,10 @@ transform = Transform3D(-4.355934e-08, -0.36696872, 0.9302333, 3.6427223e-09, 0.
 keep_aspect = 0
 
 [node name="Blue_bottle" parent="PlayerPOV" unique_id=503958825 instance=ExtResource("2_tbgi4")]
-transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.5235529, 1.1485014, 0.845879)
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.26742172, 1.1485014, 0.5895832)
 
 [node name="Orange_bottle" parent="PlayerPOV" unique_id=2013477325 instance=ExtResource("3_tefeu")]
-transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.2841282, 1.1584164, 0.6163406)
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.53909206, 1.1584164, 0.82306105)
 
 [node name="Green_bottle" parent="PlayerPOV" unique_id=1497151850 instance=ExtResource("4_o6xl0")]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.3395176, 1.145464, 0.7984647)
