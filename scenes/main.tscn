@@ -1,13 +1,90 @@
 [gd_scene format=3 uid="uid://155xx7s6y6ta"]
 
 [ext_resource type="PackedScene" uid="uid://nho7770bp1dp" path="res://models/bar_counter.glb" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://c1t6c8ttc61a1" path="res://models/LowPolyTable.glb" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://dtgtb73gp38v" path="res://models/Blue_bottle.glb" id="2_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dukvaij0rnvwu" path="res://models/Orange_bottle.glb" id="3_tefeu"]
+[ext_resource type="PackedScene" uid="uid://cgrtckjokvmmt" path="res://models/Green_bottle.glb" id="4_o6xl0"]
 
 [node name="Main" type="Node3D" unique_id=894062825]
 
-[node name="bar_counter" parent="." unique_id=865865762 instance=ExtResource("1_o5qli")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6796751, 0, 0.12329814)
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1084167413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.860754, 4.3234158, 0)
+light_color = Color(0.95266825, 0.34876683, 0.8129373, 1)
+light_energy = 10.0
+omni_range = 36.088
 
-[node name="bartender" type="Node3D" parent="." unique_id=1006972906]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1578166, 0.56881166, 0)
+[node name="PlayerPOV" type="Node3D" parent="." unique_id=891639708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.495123, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="bartender" unique_id=815872212]
+[node name="bar_counter" parent="PlayerPOV" unique_id=865865762 instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0.32108974, 0.4987812, 0.12329814)
+
+[node name="bartender" type="Node3D" parent="PlayerPOV" unique_id=1006972906]
+transform = Transform3D(0.99652153, -0.08333577, 0, 0.08333577, 0.99652153, 0, 0, 0, 1, 1.338, 1.6, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="PlayerPOV/bartender" unique_id=815872212]
+transform = Transform3D(-4.355934e-08, -0.36696872, 0.9302333, 3.6427223e-09, 0.9302333, 0.36696872, -1, 1.9373497e-08, -3.9183583e-08, 0.22370434, 0.44572967, 4.6582613e-08)
+keep_aspect = 0
+
+[node name="Blue_bottle" parent="PlayerPOV" unique_id=503958825 instance=ExtResource("2_tbgi4")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.5235529, 1.1485014, 0.845879)
+
+[node name="Orange_bottle" parent="PlayerPOV" unique_id=2013477325 instance=ExtResource("3_tefeu")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.2841282, 1.1584164, 0.6163406)
+
+[node name="Green_bottle" parent="PlayerPOV" unique_id=1497151850 instance=ExtResource("4_o6xl0")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.3395176, 1.145464, 0.7984647)
+
+[node name="Scenario" type="Node3D" parent="." unique_id=991183983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3129382, 0)
+
+[node name="wall1" type="CSGBox3D" parent="Scenario" unique_id=1161619220]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1.9090652, -0.108156204)
+size = Vector3(1, 4.5, 20)
+
+[node name="wall2" type="CSGBox3D" parent="Scenario" unique_id=1498763635]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.77685356, 1.879005, -10.160685)
+size = Vector3(1, 4.5, 20)
+
+[node name="wall3" type="CSGBox3D" parent="Scenario" unique_id=1151350581]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 10.89027, 1.8578234, 0.23833466)
+size = Vector3(1, 4.5, 20)
+
+[node name="wall4" type="CSGBox3D" parent="Scenario" unique_id=127317092]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.8937092, 1.7972498, 9.540591)
+size = Vector3(1, 4.5, 20)
+
+[node name="Floor" type="CSGBox3D" parent="Scenario" unique_id=16780337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3870821, -0.4124794, 0.0051908493)
+size = Vector3(20, 0.2, 20)
+
+[node name="Floor2" type="CSGBox3D" parent="Scenario" unique_id=1272105553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8444824, 4.2149243, 0)
+visible = false
+size = Vector3(20, 0.2, 20)
+
+[node name="Table1" type="Node3D" parent="." unique_id=330240686]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.4195938, 2)
+
+[node name="LowPolyTable" parent="Table1" unique_id=1108753398 instance=ExtResource("2_0wfyh")]
+
+[node name="Table2" type="Node3D" parent="." unique_id=840472131]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.4195938, 2)
+
+[node name="LowPolyTable" parent="Table2" unique_id=1094084647 instance=ExtResource("2_0wfyh")]
+
+[node name="Table3" type="Node3D" parent="." unique_id=527988570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.4195938, -2)
+
+[node name="LowPolyTable" parent="Table3" unique_id=901269881 instance=ExtResource("2_0wfyh")]
+
+[node name="Table4" type="Node3D" parent="." unique_id=1192326120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.4195938, -2)
+
+[node name="LowPolyTable" parent="Table4" unique_id=1088070162 instance=ExtResource("2_0wfyh")]
+
+[node name="Table5" type="Node3D" parent="." unique_id=1859624115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.4195938, 0)
+
+[node name="LowPolyTable" parent="Table5" unique_id=801501527 instance=ExtResource("2_0wfyh")]
