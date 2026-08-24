@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cgrtckjokvmmt" path="res://models/Green_bottle.glb" id="4_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://dqojq41fwpr3j" path="res://scenes/table.tscn" id="6_tefeu"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_usg23"]
+size = Vector3(20, 1, 20)
+
 [node name="Main" type="Node3D" unique_id=894062825]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1084167413]
@@ -55,14 +58,20 @@ size = Vector3(1, 4.5, 20)
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.8937092, 1.7972498, 9.540591)
 size = Vector3(1, 4.5, 20)
 
-[node name="Floor" type="CSGBox3D" parent="Scenario" unique_id=16780337]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3870821, -0.4124794, 0.0051908493)
-size = Vector3(20, 0.2, 20)
-
 [node name="Floor2" type="CSGBox3D" parent="Scenario" unique_id=1272105553]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8444824, 4.2149243, 0)
 visible = false
 size = Vector3(20, 0.2, 20)
+
+[node name="Floor" type="StaticBody3D" parent="Scenario" unique_id=597945711]
+
+[node name="FloorMesh" type="CSGBox3D" parent="Scenario/Floor" unique_id=16780337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3870821, -0.4124794, 0.0051908493)
+size = Vector3(20, 0.2, 20)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scenario/Floor" unique_id=529206525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.387, -0.412, 0.005)
+shape = SubResource("BoxShape3D_usg23")
 
 [node name="Table" parent="." unique_id=594165812 instance=ExtResource("6_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.44074678, 0)
