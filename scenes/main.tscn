@@ -9,6 +9,12 @@
 [ext_resource type="ArrayMesh" uid="uid://blrsw58qo5v42" path="res://models/VasoLargo/VasoLargo.obj" id="7_85g3d"]
 [ext_resource type="ArrayMesh" uid="uid://b7qe6ucg6767u" path="res://models/CopaMartini/CopaMartini.obj" id="8_choun"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bg1kw"]
+size = Vector3(0.61920166, 1.0556641, 5.998291)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_usg23"]
+size = Vector3(20, 1, 20)
+
 [node name="Main" type="Node3D" unique_id=894062825]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1084167413]
@@ -19,9 +25,6 @@ omni_range = 36.088
 
 [node name="PlayerPOV" type="Node3D" parent="." unique_id=891639708]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.495123, 0, 0)
-
-[node name="bar_counter" parent="PlayerPOV" unique_id=865865762 instance=ExtResource("1_o5qli")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0.32108974, 0.4987812, 0.12329814)
 
 [node name="bartender" type="Node3D" parent="PlayerPOV" unique_id=1006972906]
 transform = Transform3D(0.99652153, -0.08333577, 0, 0.08333577, 0.99652153, 0, 0, 0, 1, 1.3063002, 1.6, 0)
@@ -38,6 +41,15 @@ transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.53909206, 1.158416
 
 [node name="Green_bottle" parent="PlayerPOV" unique_id=1497151850 instance=ExtResource("4_o6xl0")]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.3395176, 1.145464, 0.7984647)
+
+[node name="Counter" type="StaticBody3D" parent="PlayerPOV" unique_id=422678845]
+
+[node name="bar_counter" parent="PlayerPOV/Counter" unique_id=865865762 instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0.32108974, 0.4987812, 0.12329814)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerPOV/Counter" unique_id=818441143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3220682, 0.52683204, 0.12141311)
+shape = SubResource("BoxShape3D_bg1kw")
 
 [node name="Scenario" type="Node3D" parent="." unique_id=991183983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3129382, 0)
@@ -58,14 +70,20 @@ size = Vector3(1, 4.5, 20)
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.8937092, 1.7972498, 9.540591)
 size = Vector3(1, 4.5, 20)
 
-[node name="Floor" type="CSGBox3D" parent="Scenario" unique_id=16780337]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3870821, -0.4124794, 0.0051908493)
-size = Vector3(20, 0.2, 20)
-
 [node name="Floor2" type="CSGBox3D" parent="Scenario" unique_id=1272105553]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8444824, 4.2149243, 0)
 visible = false
 size = Vector3(20, 0.2, 20)
+
+[node name="Floor" type="StaticBody3D" parent="Scenario" unique_id=597945711]
+
+[node name="FloorMesh" type="CSGBox3D" parent="Scenario/Floor" unique_id=16780337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3870821, -0.4124794, 0.0051908493)
+size = Vector3(20, 0.2, 20)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scenario/Floor" unique_id=529206525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.387, -0.412, 0.005)
+shape = SubResource("BoxShape3D_usg23")
 
 [node name="Table" parent="." unique_id=594165812 instance=ExtResource("6_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.44074678, 0)
@@ -82,4 +100,5 @@ mesh = ExtResource("7_85g3d")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6363163, 1.0483344, -1.0286149)
 mesh = ExtResource("8_choun")
 
+[editable path="PlayerPOV/Counter/bar_counter"]
 [editable path="Table"]
