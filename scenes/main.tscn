@@ -6,18 +6,25 @@
 [ext_resource type="PackedScene" uid="uid://dukvaij0rnvwu" path="res://models/Orange_bottle.glb" id="3_tefeu"]
 [ext_resource type="Script" uid="uid://du04nvf1o1pg2" path="res://scripts/Highlightable.gd" id="4_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://cgrtckjokvmmt" path="res://models/Green_bottle.glb" id="4_o6xl0"]
+[ext_resource type="AudioStream" uid="uid://caxx52mb0jyit" path="res://audio/bottle_pick.mp3" id="5_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://c3msgr8hypixp" path="res://models/client.blend" id="5_o6xl0"]
 [ext_resource type="Material" uid="uid://cld0mnf48jgx5" path="res://materials/object_outline.tres" id="5_trceg"]
 [ext_resource type="PackedScene" uid="uid://dqojq41fwpr3j" path="res://scenes/table.tscn" id="6_tefeu"]
 [ext_resource type="ArrayMesh" uid="uid://dluy7ytnq677v" path="res://models/VasoWisky/VasoWisky.obj" id="6_tipki"]
 [ext_resource type="ArrayMesh" uid="uid://blrsw58qo5v42" path="res://models/VasoLargo/VasoLargo.obj" id="7_85g3d"]
 [ext_resource type="ArrayMesh" uid="uid://b7qe6ucg6767u" path="res://models/CopaMartini/CopaMartini.obj" id="8_choun"]
+[ext_resource type="PackedScene" uid="uid://d3gyiehh7oy4n" path="res://scenes/base_glass.tscn" id="9_a8y0u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bg1kw"]
 size = Vector3(0.61920166, 1.0556641, 5.998291)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fbwq"]
 size = Vector3(1.4206238, 4.4107056, 1.495369)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jbj1t"]
+random_pitch = 1.0717734
+streams_count = 1
+stream_0/stream = ExtResource("5_a8y0u")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0hkr"]
 resource_name = "Material.001"
@@ -58,6 +65,14 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d0cnm")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ya4ey"]
+size = Vector3(1.7387085, 4.4107056, 1.7485504)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kmwet"]
+random_pitch = 1.0717734
+streams_count = 1
+stream_0/stream = ExtResource("5_a8y0u")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_usg23"]
 size = Vector3(20, 1, 20)
@@ -116,6 +131,9 @@ shape = SubResource("BoxShape3D_0fbwq")
 
 [node name="Orange_bottle" parent="PlayerPOV/Counter/Bottles/red_bottle" unique_id=2013477325 instance=ExtResource("3_tefeu")]
 
+[node name="SFXPlayer" type="AudioStreamPlayer3D" parent="PlayerPOV/Counter/Bottles/red_bottle" unique_id=340492164]
+stream = SubResource("AudioStreamRandomizer_jbj1t")
+
 [node name="blue_bottle" type="Node3D" parent="PlayerPOV/Counter/Bottles" unique_id=1556229483]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.19368744, 1.1389397, 0.54992694)
 script = ExtResource("4_eb6dy")
@@ -131,6 +149,9 @@ mesh = SubResource("ArrayMesh_aco25")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049476624, 1.1521912, 1.2806478)
 shape = SubResource("BoxShape3D_0fbwq")
 
+[node name="SFXPlayer" type="AudioStreamPlayer3D" parent="PlayerPOV/Counter/Bottles/blue_bottle" unique_id=2146072822]
+stream = SubResource("AudioStreamRandomizer_jbj1t")
+
 [node name="green_bottle" type="Node3D" parent="PlayerPOV/Counter/Bottles" unique_id=1210270903]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.49508715, 1.1383804, 0.8822192)
 script = ExtResource("4_eb6dy")
@@ -144,20 +165,46 @@ shape = SubResource("BoxShape3D_0fbwq")
 
 [node name="Green_bottle" parent="PlayerPOV/Counter/Bottles/green_bottle" unique_id=1497151850 instance=ExtResource("4_o6xl0")]
 
+[node name="SFXPlayer" type="AudioStreamPlayer3D" parent="PlayerPOV/Counter/Bottles/green_bottle" unique_id=618414538]
+stream = SubResource("AudioStreamRandomizer_jbj1t")
+
+[node name="Glasses" type="Node3D" parent="PlayerPOV/Counter/Bottles" unique_id=155153165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22263622, 1.0720592, -0.9485356)
+
+[node name="long_glass" type="Node3D" parent="PlayerPOV/Counter/Bottles/Glasses" unique_id=868264964]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0.013478577)
+script = ExtResource("4_eb6dy")
+outline_material = ExtResource("5_trceg")
+
+[node name="HoverArea" type="Area3D" parent="PlayerPOV/Counter/Bottles/Glasses/long_glass" unique_id=1935441510]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerPOV/Counter/Bottles/Glasses/long_glass/HoverArea" unique_id=1050069557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049476624, 1.1521902, -0.03578806)
+shape = SubResource("BoxShape3D_ya4ey")
+
+[node name="SFXPlayer" type="AudioStreamPlayer3D" parent="PlayerPOV/Counter/Bottles/Glasses/long_glass" unique_id=309304373]
+stream = SubResource("AudioStreamRandomizer_kmwet")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerPOV/Counter/Bottles/Glasses/long_glass" unique_id=1503768489]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+mesh = ExtResource("7_85g3d")
+
+[node name="whisky_glass" parent="PlayerPOV/Counter/Bottles/Glasses" unique_id=537109468 instance=ExtResource("9_a8y0u")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, -0.041083813, 0, 0.16557103)
+
+[node name="MeshInstance3D" parent="PlayerPOV/Counter/Bottles/Glasses/whisky_glass" index="2" unique_id=929269805]
+mesh = ExtResource("6_tipki")
+
+[node name="martini_glass" parent="PlayerPOV/Counter/Bottles/Glasses" unique_id=1565792282 instance=ExtResource("9_a8y0u")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.20040226, 0, -0.023279786)
+
+[node name="MeshInstance3D" parent="PlayerPOV/Counter/Bottles/Glasses/martini_glass" index="2" unique_id=929269805]
+mesh = ExtResource("8_choun")
+
 [node name="jigger" parent="PlayerPOV/Counter" unique_id=88108142 instance=ExtResource("1_choun")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.53190327, 1.0886642, -0.6660662)
 
-[node name="VasoWisky" type="MeshInstance3D" parent="PlayerPOV" unique_id=465154831]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.1479106, 1.0521055, -0.7792134)
-mesh = ExtResource("6_tipki")
-
-[node name="VasoLargo" type="MeshInstance3D" parent="PlayerPOV" unique_id=865998223]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.15840483, 1.0493735, -0.57249576)
-mesh = ExtResource("7_85g3d")
-
-[node name="CopaMartini" type="MeshInstance3D" parent="PlayerPOV" unique_id=1394251538]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.14119339, 1.0497891, -1.0286149)
-mesh = ExtResource("8_choun")
+[node name="Glasses" type="Node3D" parent="PlayerPOV/Counter" unique_id=796517808]
 
 [node name="Scenario" type="Node3D" parent="." unique_id=991183983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3129382, 0)
@@ -210,4 +257,6 @@ shape = SubResource("CapsuleShape3D_usg23")
 environment = SubResource("Environment_0fbwq")
 
 [editable path="PlayerPOV/Counter/bar_counter"]
+[editable path="PlayerPOV/Counter/Bottles/Glasses/whisky_glass"]
+[editable path="PlayerPOV/Counter/Bottles/Glasses/martini_glass"]
 [editable path="Table"]

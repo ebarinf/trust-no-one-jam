@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d3gyiehh7oy4n"]
+
+[ext_resource type="Script" uid="uid://du04nvf1o1pg2" path="res://scripts/Highlightable.gd" id="1_fqwc7"]
+[ext_resource type="Material" uid="uid://cld0mnf48jgx5" path="res://materials/object_outline.tres" id="2_ua065"]
+[ext_resource type="AudioStream" uid="uid://caxx52mb0jyit" path="res://audio/bottle_pick.mp3" id="3_fjppi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ya4ey"]
+size = Vector3(1.7387085, 4.4107056, 1.7485504)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kmwet"]
+random_pitch = 1.0717734
+streams_count = 1
+stream_0/stream = ExtResource("3_fjppi")
+
+[node name="base_glass" type="Node3D" unique_id=1890206128]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
+script = ExtResource("1_fqwc7")
+outline_material = ExtResource("2_ua065")
+
+[node name="HoverArea" type="Area3D" parent="." unique_id=763487608]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HoverArea" unique_id=1889985546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049476624, 1.1521902, -0.03578806)
+shape = SubResource("BoxShape3D_ya4ey")
+
+[node name="SFXPlayer" type="AudioStreamPlayer3D" parent="." unique_id=309304373]
+stream = SubResource("AudioStreamRandomizer_kmwet")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=929269805]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
