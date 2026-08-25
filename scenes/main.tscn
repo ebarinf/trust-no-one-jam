@@ -14,6 +14,7 @@
 [ext_resource type="ArrayMesh" uid="uid://blrsw58qo5v42" path="res://models/VasoLargo/VasoLargo.obj" id="7_85g3d"]
 [ext_resource type="ArrayMesh" uid="uid://b7qe6ucg6767u" path="res://models/CopaMartini/CopaMartini.obj" id="8_choun"]
 [ext_resource type="PackedScene" uid="uid://d3gyiehh7oy4n" path="res://scenes/base_glass.tscn" id="9_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://cdb6yxoqrx3ca" path="res://models/bar_mat.glb" id="13_jkv2x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bg1kw"]
 size = Vector3(0.61920166, 1.0556641, 5.998291)
@@ -205,6 +206,9 @@ mesh = ExtResource("8_choun")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.53190327, 1.0886642, -0.6660662)
 
 [node name="Glasses" type="Node3D" parent="PlayerPOV/Counter" unique_id=796517808]
+
+[node name="bar_mat" parent="PlayerPOV/Counter" unique_id=1585013378 instance=ExtResource("13_jkv2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37824583, 1.0596641, -0.019144654)
 
 [node name="Scenario" type="Node3D" parent="." unique_id=991183983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3129382, 0)
