@@ -15,7 +15,6 @@
 [ext_resource type="ArrayMesh" uid="uid://b7qe6ucg6767u" path="res://models/CopaMartini/CopaMartini.obj" id="8_choun"]
 [ext_resource type="PackedScene" uid="uid://d3gyiehh7oy4n" path="res://scenes/base_glass.tscn" id="9_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://cdb6yxoqrx3ca" path="res://models/bar_mat.glb" id="13_jkv2x"]
-[ext_resource type="PackedScene" uid="uid://comoas4v6u627" path="res://models/fat-man-type-2-a.glb" id="16_jbj1t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bg1kw"]
 size = Vector3(0.61920166, 1.0556641, 5.998291)
@@ -257,9 +256,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017742395, -0.7610401, 0.00
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=62710457]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004783869, 0.07360375, 0.00221622)
 shape = SubResource("CapsuleShape3D_usg23")
-
-[node name="fat-man-type-2-a" parent="CharacterBody3D" unique_id=771286389 instance=ExtResource("16_jbj1t")]
-transform = Transform3D(0.23597297, 0, -0.9717596, 0, 1, 0, 0.9717596, 0, 0.23597297, -1.3273798, 0.09542465, 1.7883728)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1200153462]
 environment = SubResource("Environment_0fbwq")

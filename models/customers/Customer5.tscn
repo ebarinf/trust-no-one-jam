@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://dktp50txbav5u"]
+
+[ext_resource type="PackedScene" uid="uid://bq5ro74sxua5q" path="res://models/fat-woman-b-1.glb" id="1_ql3km"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_714fh"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_85bh7"]
+animation = &"SEAT"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7r6vt"]
+animation = &"CARRY"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_73ift"]
+animation = &"DRINK"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b6o3a"]
+animation = &"DRUG"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j1frt"]
+animation = &"SUS"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6a6il"]
+animation = &"ASDASD"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_714fh"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_lcl8o"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_4iw7e"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_nn82l"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_wbeyp"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ijx78"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_85bh7"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wbeyp"]
+animation = &"WALK"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_usg23"]
+graph_offset = Vector2(-72.06717, -108.26929)
+nodes/output/position = Vector2(790, 40)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_714fh")
+nodes/Animation/position = Vector2(-1190, -190)
+nodes/walk/node = SubResource("AnimationNodeAnimation_wbeyp")
+nodes/walk/position = Vector2(-1200, 100)
+nodes/WALK/node = SubResource("AnimationNodeBlend2_85bh7")
+nodes/WALK/position = Vector2(-980, -200)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_85bh7")
+"nodes/Animation 2/position" = Vector2(-990, 80)
+nodes/SEAT/node = SubResource("AnimationNodeBlend2_wbeyp")
+nodes/SEAT/position = Vector2(-770, -180)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_7r6vt")
+"nodes/Animation 3/position" = Vector2(-830, 200)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_73ift")
+"nodes/Animation 4/position" = Vector2(-320, 160)
+"nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_b6o3a")
+"nodes/Animation 5/position" = Vector2(0, 220)
+"nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_j1frt")
+"nodes/Animation 6/position" = Vector2(525.5161, 434.51752)
+"nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_6a6il")
+"nodes/Animation 7/position" = Vector2(-660, 340)
+nodes/CARRY/node = SubResource("AnimationNodeBlend2_lcl8o")
+nodes/CARRY/position = Vector2(-540, -140)
+nodes/ASD/node = SubResource("AnimationNodeBlend2_714fh")
+nodes/ASD/position = Vector2(-300, -190)
+nodes/DRINK/node = SubResource("AnimationNodeOneShot_4iw7e")
+nodes/DRINK/position = Vector2(-30, -160)
+nodes/DRUG/node = SubResource("AnimationNodeOneShot_nn82l")
+nodes/DRUG/position = Vector2(240, -150)
+nodes/SUS/node = SubResource("AnimationNodeOneShot_ijx78")
+nodes/SUS/position = Vector2(546.20715, 38.20765)
+node_connections = [&"output", 0, &"SUS", &"WALK", 0, &"Animation", &"WALK", 1, &"walk", &"SEAT", 0, &"WALK", &"SEAT", 1, &"Animation 2", &"CARRY", 0, &"SEAT", &"CARRY", 1, &"Animation 3", &"ASD", 0, &"CARRY", &"ASD", 1, &"Animation 7", &"DRINK", 0, &"ASD", &"DRINK", 1, &"Animation 4", &"DRUG", 0, &"DRINK", &"DRUG", 1, &"Animation 5", &"SUS", 0, &"DRUG", &"SUS", 1, &"Animation 6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_usg23"]
+height = 1.7983398
+
+[node name="Customer1" type="CharacterBody3D" unique_id=373415144]
+
+[node name="fat-woman-b-1" parent="." unique_id=1105588619 instance=ExtResource("1_ql3km")]
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=328778503]
+root_node = NodePath("../fat-woman-b-1")
+tree_root = SubResource("AnimationNodeBlendTree_usg23")
+anim_player = NodePath("../fat-woman-b-1/AnimationPlayer")
+parameters/WALK/blend_amount = 0.0
+parameters/SEAT/blend_amount = 0.0
+parameters/CARRY/blend_amount = 0.0
+parameters/ASD/blend_amount = 0.0
+parameters/DRINK/active = false
+parameters/DRINK/internal_active = false
+parameters/DRINK/request = 0
+parameters/DRUG/active = false
+parameters/DRUG/internal_active = false
+parameters/DRUG/request = 0
+parameters/SUS/active = false
+parameters/SUS/internal_active = false
+parameters/SUS/request = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=679114591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90815866, 0)
+shape = SubResource("CapsuleShape3D_usg23")
+
+[editable path="fat-woman-b-1"]
