@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d22yvdpvr717j"]
 
+[ext_resource type="Script" uid="uid://dwt1cws3yk5vi" path="res://scripts/customer.gd" id="1_85bh7"]
 [ext_resource type="PackedScene" uid="uid://boaaxkbrahtgj" path="res://models/fat-man-b-1.glb" id="1_714fh"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_714fh"]
@@ -40,7 +41,7 @@ animation = &"ASDASD"
 animation = &"WALK"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_usg23"]
-graph_offset = Vector2(-167.19046, -178.67586)
+graph_offset = Vector2(-1062.043, -250.93799)
 nodes/output/position = Vector2(790, 40)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_714fh")
 nodes/Animation/position = Vector2(-1190, -190)
@@ -75,33 +76,35 @@ nodes/SUS/position = Vector2(546.20715, 38.20765)
 node_connections = [&"output", 0, &"SUS", &"WALK", 0, &"Animation", &"WALK", 1, &"walk", &"SEAT", 0, &"WALK", &"SEAT", 1, &"Animation 2", &"CARRY", 0, &"SEAT", &"CARRY", 1, &"Animation 3", &"ASD", 0, &"CARRY", &"ASD", 1, &"Animation 7", &"DRINK", 0, &"ASD", &"DRINK", 1, &"Animation 4", &"DRUG", 0, &"DRINK", &"DRUG", 1, &"Animation 5", &"SUS", 0, &"DRUG", &"SUS", 1, &"Animation 6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_usg23"]
-height = 1.7983398
+radius = 0.14208984
+height = 1.4242096
 
-[node name="Customer1" type="CharacterBody3D" unique_id=373415144]
+[node name="Customer1" type="CharacterBody3D" unique_id=373415144 groups=["npc"]]
+script = ExtResource("1_85bh7")
 
 [node name="fat-man-b-1" parent="." unique_id=1771916504 instance=ExtResource("1_714fh")]
 
-[node name="Skeleton3D" parent="fat-man-b-1/fat-man-b" parent_id_path=PackedInt32Array(1771916504, 1495588836) index="0" unique_id=549703917]
-bones/0/position = Vector3(0, 0.49589258, 0)
+[node name="Skeleton3D" parent="fat-man-b-1/fat-man-b" parent_id_path=PackedInt32Array(1771916504, 852789954) index="0" unique_id=247560021]
+bones/0/position = Vector3(0, 0.7034752, 0)
 bones/0/rotation = Quaternion(-2.9802326e-08, 1.1920928e-07, -2.5243543e-29, 1)
-bones/1/rotation = Quaternion(-3.5527103e-15, 2.1316282e-14, -6.058452e-28, 1)
-bones/2/rotation = Quaternion(-3.5527103e-15, -1.7763568e-14, 4.235164e-22, 1)
+bones/1/rotation = Quaternion(-3.5635256e-10, 0.030753125, 6.2262697e-09, 0.99952704)
+bones/2/rotation = Quaternion(-2.1232998e-15, -3.725304e-09, -5.169476e-16, 1)
 bones/3/rotation = Quaternion(0.72670794, 0.4473446, 0.44395158, -0.27328625)
-bones/4/rotation = Quaternion(-0.48575974, 0.10424295, -0.032604426, 0.86724156)
-bones/5/rotation = Quaternion(-0.07356814, -0.011018154, -0.5375734, 0.8399293)
-bones/6/rotation = Quaternion(-0.21955018, 0.018253844, -0.001788944, 0.9754288)
-bones/7/rotation = Quaternion(0.016591974, -0.0009861789, 0.00011529344, 0.99986196)
+bones/4/rotation = Quaternion(-0.41518223, 0.21229084, 0.100281626, 0.87891984)
+bones/5/rotation = Quaternion(-0.018689916, -1.3849211e-07, 9.223576e-09, 0.99982536)
+bones/6/rotation = Quaternion(0.014761469, 7.750518e-08, -1.141859e-09, 0.99989104)
+bones/7/rotation = Quaternion(0.0039290036, -1.6271965e-08, 7.2152717e-10, 0.9999924)
 bones/8/rotation = Quaternion(0.72670805, -0.44734463, -0.44395146, -0.2732864)
-bones/9/rotation = Quaternion(-0.48575976, -0.10424295, 0.032604396, 0.86724156)
-bones/10/rotation = Quaternion(-0.07356813, 0.011018175, 0.5375735, 0.8399293)
-bones/11/rotation = Quaternion(-0.21955018, -0.01825384, 0.001788944, 0.9754288)
-bones/12/rotation = Quaternion(0.016591964, 0.0009861791, -0.000115298564, 0.99986196)
+bones/9/rotation = Quaternion(-0.41580984, -0.21221913, -0.10043317, 0.87862307)
+bones/10/rotation = Quaternion(-0.018689916, 1.5376904e-07, 5.049831e-09, 0.99982536)
+bones/11/rotation = Quaternion(0.01476146, -7.648782e-08, 2.6347766e-09, 0.99989104)
+bones/12/rotation = Quaternion(0.003929002, 5.7817293e-09, -1.0574789e-09, 0.9999924)
 bones/13/rotation = Quaternion(0.6702396, 0.43240428, 0.49374866, -0.34643564)
-bones/14/rotation = Quaternion(-0.68104553, -0.6777848, -0.0018566248, 0.2770947)
-bones/15/rotation = Quaternion(0.6709626, -0.006622807, -0.00450641, 0.7414481)
+bones/14/rotation = Quaternion(-0.33159214, -0.47860274, 0.45006868, 0.67707044)
+bones/15/rotation = Quaternion(0.13403797, -0.030129971, -0.020983974, 0.9902958)
 bones/17/rotation = Quaternion(0.6702398, -0.43240413, -0.49374852, -0.34643576)
-bones/18/rotation = Quaternion(-0.65519667, 0.70346147, 0.006071359, 0.27535903)
-bones/19/rotation = Quaternion(0.6851001, 0.0066978545, 0.004424871, 0.72840476)
+bones/18/rotation = Quaternion(-0.39874464, 0.5207408, -0.39884475, 0.6409014)
+bones/19/rotation = Quaternion(0.16987436, 0.002919701, -0.007952582, 0.98542935)
 
 [node name="AnimationTree" type="AnimationTree" parent="fat-man-b-1" unique_id=328778503]
 tree_root = SubResource("AnimationNodeBlendTree_usg23")
@@ -120,8 +123,8 @@ parameters/SUS/active = false
 parameters/SUS/internal_active = false
 parameters/SUS/request = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=679114591]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90815866, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=679114591 groups=["npc"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0952238, 0)
 shape = SubResource("CapsuleShape3D_usg23")
 
 [editable path="fat-man-b-1"]
