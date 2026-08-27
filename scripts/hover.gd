@@ -2,6 +2,8 @@ extends Camera3D
 
 var current_hovered: Highlightable = null
 @export var bebida_actual: Node3D
+@export var jigger: Jigger
+@export var recipe_builder: RecipeBuilder
 
 func _process(_delta):
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -35,10 +37,16 @@ func _process(_delta):
 		current_hovered = hit_highlightable
 
 func _unhandled_input(event: InputEvent):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if current_hovered:
-				current_hovered.trigger_click()
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if jigger.is_held and current_hovered and current_hovered.item_type == "coaster":
+				jigger.put_down()
+			elif jigger.is_held and current_hovered and current_hovered.item_type == "ingredient":
+				recipe_builder.add_ingredient(current_hovered.item_name)
+			elif current_hovered:
+				current_hovered.on_left_click()
+	if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE:
+		recipe_builder.submit_recipe()
 
 func _on_item_clicked(item: Highlightable):
 	bebida_actual.handle_click(item)

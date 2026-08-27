@@ -7,6 +7,7 @@ signal clicked(item: Highlightable)
 @onready var sfx_player: AudioStreamPlayer3D = $SFXPlayer
 @export var item_type: String = "ingredient" 
 @export var item_name: String = "" 
+@export var outline_width_override: float = -1.0
 
 var _was_highlighted: bool = false
 var _outline_instances: Array = []
@@ -25,6 +26,8 @@ func _apply_outline_to_children(node: Node):
 				if mat:
 					var mat_unique = mat.duplicate()
 					mat_unique.next_pass = outline_material.duplicate()
+					if outline_width_override >= 0.0:
+						mat_unique.next_pass.set_shader_parameter("outline_width", outline_width_override)
 					child.set_surface_override_material(i, mat_unique)
 					_outline_instances.append(mat_unique.next_pass)
 		_apply_outline_to_children(child)
@@ -39,3 +42,6 @@ func set_highlighted(is_highlighted: bool):
 	
 func trigger_click():
 	clicked.emit(self)
+	
+func on_left_click():
+	trigger_click()
