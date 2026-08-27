@@ -1,6 +1,24 @@
-[gd_scene format=3 uid="uid://dktp50txbav5u"]
+[gd_scene format=3 uid="uid://bruv5o2mmu53i"]
 
-[ext_resource type="PackedScene" uid="uid://bq5ro74sxua5q" path="res://models/fat-woman-b-1.glb" id="1_ql3km"]
+[ext_resource type="Script" uid="uid://b0vttl48n5jyw" path="res://scripts/randomized_character.gd" id="1_wtyj3"]
+[ext_resource type="PackedScene" uid="uid://boaaxkbrahtgj" path="res://models/fat-man-b-1.glb" id="2_8ty35"]
+[ext_resource type="PackedScene" uid="uid://cj10s42vxclqc" path="res://models/fat-man-c-1.glb" id="2_tkp40"]
+[ext_resource type="PackedScene" uid="uid://1oieupkowq8r" path="res://models/normal-woman-b-1.glb" id="3_uu584"]
+[ext_resource type="PackedScene" uid="uid://comoas4v6u627" path="res://models/fat-man-type-2-a.glb" id="4_e0gg7"]
+[ext_resource type="PackedScene" uid="uid://csp6pta7jhyx5" path="res://models/strong-woman-c-1.glb" id="4_ohfk8"]
+[ext_resource type="PackedScene" uid="uid://bhip51rbkeoyq" path="res://models/strong-woman-b-1.glb" id="4_tkp40"]
+[ext_resource type="PackedScene" uid="uid://bugg4eyesf2xt" path="res://models/fat-woman-a-1.glb" id="5_pew7q"]
+[ext_resource type="PackedScene" uid="uid://bq5ro74sxua5q" path="res://models/fat-woman-b-1.glb" id="6_eb2s6"]
+[ext_resource type="PackedScene" uid="uid://c4cpme0qru3l7" path="res://models/fat-woman-c-1.glb" id="7_hmc10"]
+[ext_resource type="PackedScene" uid="uid://dsn31us3rcmbc" path="res://models/normal-man-a-1.glb" id="8_artid"]
+[ext_resource type="PackedScene" uid="uid://cr3268o6tblv2" path="res://models/normal-man-b-1.glb" id="9_3ee03"]
+[ext_resource type="PackedScene" uid="uid://cv11lfgq6ix6h" path="res://models/normal-man-c-1.glb" id="10_68sjn"]
+[ext_resource type="PackedScene" uid="uid://d2glgcahformg" path="res://models/normal-woman-a-1.glb" id="11_gj2hk"]
+[ext_resource type="PackedScene" uid="uid://bksiw52imvl88" path="res://models/normal-woman-c-1.glb" id="13_pc47y"]
+[ext_resource type="PackedScene" uid="uid://r1vrx0s550ps" path="res://models/strong-man-a-1.glb" id="14_ef3gj"]
+[ext_resource type="PackedScene" uid="uid://q0sbcnyt7ek4" path="res://models/strong-man-b-1.glb" id="15_dayv4"]
+[ext_resource type="PackedScene" uid="uid://bottfnunfv23a" path="res://models/strong-man-c-1.glb" id="16_6foic"]
+[ext_resource type="PackedScene" uid="uid://byna7x8421sjf" path="res://models/strong-woman-a-1.glb" id="17_hhfwg"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_714fh"]
 
@@ -40,7 +58,7 @@ animation = &"ASDASD"
 animation = &"WALK"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_usg23"]
-graph_offset = Vector2(-72.06717, -108.26929)
+graph_offset = Vector2(-841.45337, -204.09738)
 nodes/output/position = Vector2(790, 40)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_714fh")
 nodes/Animation/position = Vector2(-1190, -190)
@@ -75,16 +93,18 @@ nodes/SUS/position = Vector2(546.20715, 38.20765)
 node_connections = [&"output", 0, &"SUS", &"WALK", 0, &"Animation", &"WALK", 1, &"walk", &"SEAT", 0, &"WALK", &"SEAT", 1, &"Animation 2", &"CARRY", 0, &"SEAT", &"CARRY", 1, &"Animation 3", &"ASD", 0, &"CARRY", &"ASD", 1, &"Animation 7", &"DRINK", 0, &"ASD", &"DRINK", 1, &"Animation 4", &"DRUG", 0, &"DRINK", &"DRUG", 1, &"Animation 5", &"SUS", 0, &"DRUG", &"SUS", 1, &"Animation 6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_usg23"]
-height = 1.7983398
+radius = 0.14208984
+height = 1.4242096
 
-[node name="Customer1" type="CharacterBody3D" unique_id=373415144]
+[sub_resource type="BoxShape3D" id="BoxShape3D_acdls"]
+size = Vector3(0.5644531, 0.37402344, 1)
 
-[node name="fat-woman-b-1" parent="." unique_id=1105588619 instance=ExtResource("1_ql3km")]
+[node name="RandomClient" type="CharacterBody3D" unique_id=373415144 groups=["npc"]]
+script = ExtResource("1_wtyj3")
+character_models = Array[PackedScene]([ExtResource("2_8ty35"), ExtResource("2_tkp40"), ExtResource("4_e0gg7"), ExtResource("5_pew7q"), ExtResource("6_eb2s6"), ExtResource("7_hmc10"), ExtResource("8_artid"), ExtResource("9_3ee03"), ExtResource("10_68sjn"), ExtResource("11_gj2hk"), ExtResource("3_uu584"), ExtResource("13_pc47y"), ExtResource("14_ef3gj"), ExtResource("15_dayv4"), ExtResource("16_6foic"), ExtResource("17_hhfwg"), ExtResource("4_tkp40"), ExtResource("4_ohfk8")])
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=328778503]
-root_node = NodePath("../fat-woman-b-1")
 tree_root = SubResource("AnimationNodeBlendTree_usg23")
-anim_player = NodePath("../fat-woman-b-1/AnimationPlayer")
 parameters/WALK/blend_amount = 0.0
 parameters/SEAT/blend_amount = 0.0
 parameters/CARRY/blend_amount = 0.0
@@ -99,8 +119,14 @@ parameters/SUS/active = false
 parameters/SUS/internal_active = false
 parameters/SUS/request = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=679114591]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90815866, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=679114591 groups=["npc"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0952238, 0)
 shape = SubResource("CapsuleShape3D_usg23")
 
-[editable path="fat-woman-b-1"]
+[node name="SeatDetection" type="Area3D" parent="." unique_id=1995661268]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SeatDetection" unique_id=1882739491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0034179688, 0.26346773, 0.46150017)
+shape = SubResource("BoxShape3D_acdls")
+
+[node name="Model" type="Node3D" parent="." unique_id=575832220]
