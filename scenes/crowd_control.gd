@@ -6,6 +6,7 @@ extends Node3D
 
 var tables: Array[StaticBody3D] = []
 var unused_seats: Array[Area3D] = []
+var customers : Array[CharacterBody3D] = []
 
 
 func _ready() -> void:
@@ -19,7 +20,7 @@ func _ready() -> void:
 
 
 func _get_tables() -> void:
-	for i in range(1, 7):
+	for i in range(1, 6):
 		var table := get_node_or_null("Table" + str(i))
 
 		if table is StaticBody3D:
@@ -51,3 +52,5 @@ func spawn_customer() -> void:
 	customer.global_transform = customer_spawn.global_transform
 
 	customer.assign_seat(unused_seats.pick_random())
+	
+	customers.append(customer)

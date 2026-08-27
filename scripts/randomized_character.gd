@@ -3,7 +3,7 @@ extends CharacterBody3D
 const SPEED = 2.0
 const ROTATION_SPEED = 5.0
 
-const STUCK_CHECK_TIME = 1.5
+const STUCK_CHECK_TIME = 0.2
 const STUCK_DISTANCE_THRESHOLD = 0.05
 const RANDOM_ESCAPE_TIME = 1.0
 const RANDOM_ESCAPE_SPEED = 2.0
@@ -14,9 +14,14 @@ const RANDOM_ESCAPE_SPEED = 2.0
 @export var character_models: Array[PackedScene] = []
 @export var character_textures: Array[Texture2D] = []
 
+@export_category("Drink")
+@export var drink_min_time := 3.0
+@export var drink_max_time := 8.0
+
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var seat_detection: Area3D = $SeatDetection
 @onready var model_container: Node3D = $Model
+
 
 var direction := Vector3.ZERO
 var direction_timer := 0.0
@@ -30,6 +35,9 @@ var last_stuck_position := Vector3.ZERO
 var escape_timer := 0.0
 var escape_direction := Vector3.ZERO
 
+# Drink
+var drink_timer := 0.0
+
 
 func _ready() -> void:
 	_randomize_model()
@@ -41,6 +49,8 @@ func _ready() -> void:
 	)
 
 	last_stuck_position = global_position
+
+	_reset_drink_timer()
 
 
 # ============================================================
@@ -55,7 +65,6 @@ func _randomize_model() -> void:
 	var model_scene: PackedScene = character_models.pick_random()
 	var model: Node = model_scene.instantiate()
 
-	# Primero agregar el modelo al árbol
 	model_container.add_child(model)
 
 	# --------------------------------------------------------
@@ -101,7 +110,6 @@ func _randomize_texture(model: Node) -> void:
 		texture.resource_path
 	)
 
-	# Buscar todos los MeshInstance3D
 	var mesh_instances := model.find_children(
 		"*",
 		"MeshInstance3D",
@@ -129,8 +137,6 @@ func _randomize_texture(model: Node) -> void:
 			if material == null:
 				continue
 
-			# Duplicar el material para que cada Customer
-			# tenga su propia textura
 			var new_material := material.duplicate()
 
 			if new_material is StandardMaterial3D:
@@ -159,6 +165,8 @@ func _physics_process(delta: float) -> void:
 	if is_seated:
 		_stop_movement()
 		_set_seated_animation()
+
+		_update_drink(delta)
 
 		move_and_slide()
 		return
@@ -246,7 +254,6 @@ func _move_to_seat(delta: float) -> void:
 
 func _on_seat_detection_area_entered(area: Area3D) -> void:
 
-	# Solo reaccionar al asiento asignado
 	if area != target_seat:
 		return
 
@@ -282,12 +289,47 @@ func _reach_seat() -> void:
 
 	is_seated = true
 
+	_reset_drink_timer()
+
 	_set_seated_animation()
 
 	print(
 		"Customer sentado en: ",
 		target_seat.name
 	)
+
+
+# ============================================================
+# DRINK
+# ============================================================
+
+func _reset_drink_timer() -> void:
+	drink_timer = randf_range(
+		drink_min_time,
+		drink_max_time
+	)
+
+
+func _update_drink(delta: float) -> void:
+
+	drink_timer -= delta
+
+	if drink_timer > 0.0:
+		return
+
+	_play_drink_animation()
+
+	_reset_drink_timer()
+
+
+func _play_drink_animation() -> void:
+
+	animation_tree.set(
+		"parameters/DRINK/request",
+		AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+	)
+
+	print("Customer está bebiendo")
 
 
 # ============================================================
@@ -318,6 +360,7 @@ func _check_if_stuck(delta: float) -> void:
 
 
 func _start_escape_movement() -> void:
+
 	print(
 		"Customer atascado. Intentando escapar..."
 	)
@@ -353,7 +396,6 @@ func _escape_movement(delta: float) -> void:
 		* RANDOM_ESCAPE_SPEED
 	)
 
-	# Rotar hacia la dirección de escape
 	var target_rotation := atan2(
 		escape_direction.x,
 		escape_direction.z
@@ -367,7 +409,6 @@ func _escape_movement(delta: float) -> void:
 
 	_set_walk_animation()
 
-	# Terminó el escape
 	if escape_timer <= 0.0:
 		stuck_timer = 0.0
 		last_stuck_position = global_position

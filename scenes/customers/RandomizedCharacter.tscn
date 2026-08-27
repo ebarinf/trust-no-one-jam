@@ -102,11 +102,11 @@ nodes/SUS/position = Vector2(546.20715, 38.20765)
 node_connections = [&"output", 0, &"SUS", &"WALK", 0, &"Animation", &"WALK", 1, &"walk", &"SEAT", 0, &"WALK", &"SEAT", 1, &"Animation 2", &"CARRY", 0, &"SEAT", &"CARRY", 1, &"Animation 3", &"ASD", 0, &"CARRY", &"ASD", 1, &"Animation 7", &"DRINK", 0, &"ASD", &"DRINK", 1, &"Animation 4", &"DRUG", 0, &"DRINK", &"DRUG", 1, &"Animation 5", &"SUS", 0, &"DRUG", &"SUS", 1, &"Animation 6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_usg23"]
-radius = 0.14208984
-height = 1.4242096
+radius = 0.25097656
+height = 1.1657181
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_acdls"]
-size = Vector3(0.5644531, 0.37402344, 1)
+size = Vector3(0.2932129, 0.37402344, 0.94470215)
 
 [node name="RandomClient" type="CharacterBody3D" unique_id=373415144 groups=["npc"]]
 script = ExtResource("1_wtyj3")
@@ -130,13 +130,13 @@ parameters/SUS/internal_active = false
 parameters/SUS/request = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=679114591 groups=["npc"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0952238, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8907366, 0)
 shape = SubResource("CapsuleShape3D_usg23")
 
 [node name="SeatDetection" type="Area3D" parent="." unique_id=1995661268]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SeatDetection" unique_id=1882739491]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0034179688, 0.26346773, 0.46150017)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008666992, 0.26346773, 0.43385124)
 shape = SubResource("BoxShape3D_acdls")
 
 [node name="Model" type="Node3D" parent="." unique_id=575832220]

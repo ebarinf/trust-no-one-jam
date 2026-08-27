@@ -14,6 +14,7 @@ func _ready() -> void:
 		$seat3,
 		$seat4
 	]
+	print(areas)
 	unused_areas = areas.duplicate()
 	for area in areas:
 		area.body_entered.connect(_on_area_body_entered.bind(area))
