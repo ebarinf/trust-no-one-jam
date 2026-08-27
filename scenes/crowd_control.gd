@@ -14,10 +14,16 @@ func _ready() -> void:
 	_update_unused_seats()
 
 	spawn_customer()
+	await get_tree().create_timer(1.0).timeout
 	spawn_customer()
+	await get_tree().create_timer(1.0).timeout
 	spawn_customer()
-	
-
+	await get_tree().create_timer(1.0).timeout
+	spawn_customer()
+	await get_tree().create_timer(1.0).timeout
+	spawn_customer()
+	await get_tree().create_timer(1.0).timeout
+	spawn_customer()
 
 func _get_tables() -> void:
 	for i in range(1, 6):
@@ -50,7 +56,8 @@ func spawn_customer() -> void:
 	add_child(customer)
 
 	customer.global_transform = customer_spawn.global_transform
-
-	customer.assign_seat(unused_seats.pick_random())
+	var assigned_seat = unused_seats.pick_random()
+	customer.assign_seat(assigned_seat)
+	unused_seats.erase(assigned_seat)
 	
 	customers.append(customer)
