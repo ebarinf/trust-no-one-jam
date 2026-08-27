@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://d22yvdpvr717j"]
+
+[ext_resource type="Script" uid="uid://dwt1cws3yk5vi" path="res://scripts/customer.gd" id="1_acdls"]
+[ext_resource type="PackedScene" uid="uid://boaaxkbrahtgj" path="res://models/fat-man-b-1.glb" id="2_hj78q"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_714fh"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_85bh7"]
+animation = &"SEAT"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7r6vt"]
+animation = &"CARRY"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_73ift"]
+animation = &"DRINK"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b6o3a"]
+animation = &"DRUG"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j1frt"]
+animation = &"SUS"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6a6il"]
+animation = &"ASDASD"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_714fh"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_lcl8o"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_4iw7e"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_nn82l"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_wbeyp"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ijx78"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_85bh7"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wbeyp"]
+animation = &"WALK"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_usg23"]
+graph_offset = Vector2(-1062.043, -250.93799)
+nodes/output/position = Vector2(790, 40)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_714fh")
+nodes/Animation/position = Vector2(-1190, -190)
+nodes/walk/node = SubResource("AnimationNodeAnimation_wbeyp")
+nodes/walk/position = Vector2(-1200, 100)
+nodes/WALK/node = SubResource("AnimationNodeBlend2_85bh7")
+nodes/WALK/position = Vector2(-980, -200)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_85bh7")
+"nodes/Animation 2/position" = Vector2(-990, 80)
+nodes/SEAT/node = SubResource("AnimationNodeBlend2_wbeyp")
+nodes/SEAT/position = Vector2(-770, -180)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_7r6vt")
+"nodes/Animation 3/position" = Vector2(-830, 200)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_73ift")
+"nodes/Animation 4/position" = Vector2(-320, 160)
+"nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_b6o3a")
+"nodes/Animation 5/position" = Vector2(0, 220)
+"nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_j1frt")
+"nodes/Animation 6/position" = Vector2(525.5161, 434.51752)
+"nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_6a6il")
+"nodes/Animation 7/position" = Vector2(-660, 340)
+nodes/CARRY/node = SubResource("AnimationNodeBlend2_lcl8o")
+nodes/CARRY/position = Vector2(-540, -140)
+nodes/ASD/node = SubResource("AnimationNodeBlend2_714fh")
+nodes/ASD/position = Vector2(-300, -190)
+nodes/DRINK/node = SubResource("AnimationNodeOneShot_4iw7e")
+nodes/DRINK/position = Vector2(-30, -160)
+nodes/DRUG/node = SubResource("AnimationNodeOneShot_nn82l")
+nodes/DRUG/position = Vector2(240, -150)
+nodes/SUS/node = SubResource("AnimationNodeOneShot_ijx78")
+nodes/SUS/position = Vector2(546.20715, 38.20765)
+node_connections = [&"output", 0, &"SUS", &"WALK", 0, &"Animation", &"WALK", 1, &"walk", &"SEAT", 0, &"WALK", &"SEAT", 1, &"Animation 2", &"CARRY", 0, &"SEAT", &"CARRY", 1, &"Animation 3", &"ASD", 0, &"CARRY", &"ASD", 1, &"Animation 7", &"DRINK", 0, &"ASD", &"DRINK", 1, &"Animation 4", &"DRUG", 0, &"DRINK", &"DRUG", 1, &"Animation 5", &"SUS", 0, &"DRUG", &"SUS", 1, &"Animation 6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_usg23"]
+radius = 0.14208984
+height = 1.4242096
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_acdls"]
+size = Vector3(0.5644531, 0.37402344, 1)
+
+[node name="Customer1" type="CharacterBody3D" unique_id=373415144 groups=["npc"]]
+script = ExtResource("1_acdls")
+
+[node name="fat-man-b-1" parent="." unique_id=1771916504 instance=ExtResource("2_hj78q")]
+
+[node name="Skeleton3D" parent="fat-man-b-1/fat-man-b" parent_id_path=PackedInt32Array(1771916504, 852789954) index="0" unique_id=247560021]
+bones/0/position = Vector3(0, 0.7034752, 0)
+bones/0/rotation = Quaternion(-2.9802326e-08, 1.1920928e-07, -2.5243543e-29, 1)
+bones/1/rotation = Quaternion(-3.5635256e-10, 0.030753125, 6.2262697e-09, 0.99952704)
+bones/2/rotation = Quaternion(-2.1232998e-15, -3.725304e-09, -5.169476e-16, 1)
+bones/3/rotation = Quaternion(0.72670794, 0.4473446, 0.44395158, -0.27328625)
+bones/4/rotation = Quaternion(-0.41518223, 0.21229084, 0.100281626, 0.87891984)
+bones/5/rotation = Quaternion(-0.018689916, -1.3849211e-07, 9.223576e-09, 0.99982536)
+bones/6/rotation = Quaternion(0.014761469, 7.750518e-08, -1.141859e-09, 0.99989104)
+bones/7/rotation = Quaternion(0.0039290036, -1.6271965e-08, 7.2152717e-10, 0.9999924)
+bones/8/rotation = Quaternion(0.72670805, -0.44734463, -0.44395146, -0.2732864)
+bones/9/rotation = Quaternion(-0.41580984, -0.21221913, -0.10043317, 0.87862307)
+bones/10/rotation = Quaternion(-0.018689916, 1.5376904e-07, 5.049831e-09, 0.99982536)
+bones/11/rotation = Quaternion(0.01476146, -7.648782e-08, 2.6347766e-09, 0.99989104)
+bones/12/rotation = Quaternion(0.003929002, 5.7817293e-09, -1.0574789e-09, 0.9999924)
+bones/13/rotation = Quaternion(0.6702396, 0.43240428, 0.49374866, -0.34643564)
+bones/14/rotation = Quaternion(-0.33159214, -0.47860274, 0.45006868, 0.67707044)
+bones/15/rotation = Quaternion(0.13403797, -0.030129971, -0.020983974, 0.9902958)
+bones/17/rotation = Quaternion(0.6702398, -0.43240413, -0.49374852, -0.34643576)
+bones/18/rotation = Quaternion(-0.39874464, 0.5207408, -0.39884475, 0.6409014)
+bones/19/rotation = Quaternion(0.16987436, 0.002919701, -0.007952582, 0.98542935)
+
+[node name="AnimationTree" type="AnimationTree" parent="fat-man-b-1" unique_id=328778503]
+tree_root = SubResource("AnimationNodeBlendTree_usg23")
+anim_player = NodePath("../AnimationPlayer")
+parameters/WALK/blend_amount = 0.0
+parameters/SEAT/blend_amount = 0.0
+parameters/CARRY/blend_amount = 0.0
+parameters/ASD/blend_amount = 0.0
+parameters/DRINK/active = false
+parameters/DRINK/internal_active = false
+parameters/DRINK/request = 0
+parameters/DRUG/active = false
+parameters/DRUG/internal_active = false
+parameters/DRUG/request = 0
+parameters/SUS/active = false
+parameters/SUS/internal_active = false
+parameters/SUS/request = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=679114591 groups=["npc"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0952238, 0)
+shape = SubResource("CapsuleShape3D_usg23")
+
+[node name="SeatDetection" type="Area3D" parent="." unique_id=1995661268]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SeatDetection" unique_id=1882739491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0034179688, 0.26346773, 0.46150017)
+shape = SubResource("BoxShape3D_acdls")
+
+[editable path="fat-man-b-1"]
