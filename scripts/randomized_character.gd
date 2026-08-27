@@ -4,21 +4,58 @@ const SPEED = 2.0
 const ROTATION_SPEED = 5.0
 
 @export var is_seated := false
-@export var customer_scene: PackedScene
+@export var character_models: Array[PackedScene] = []
 
-@onready var animation_tree: AnimationTree = $"fat-man-b-1/AnimationTree"
+@onready var animation_tree: AnimationTree = $AnimationTree
 @onready var seat_detection: Area3D = $SeatDetection
+@onready var model_container: Node3D = $Model
+
 
 var direction := Vector3.ZERO
 var direction_timer := 0.0
 var target_seat: Area3D = null
 
 
+
+
 func _ready() -> void:
-	
+	_randomize_model()
 	
 	animation_tree.active = true
+
 	seat_detection.area_entered.connect(_on_seat_detection_area_entered)
+
+
+
+func _randomize_model() -> void:
+	if character_models.is_empty():
+		push_warning("No hay modelos configurados")
+		return
+
+	var model_scene = character_models.pick_random()
+	var model = model_scene.instantiate()
+
+	# Primero agregarlo al árbol
+	model_container.add_child(model)
+
+	# Ahora ya tiene un path
+	var animation_player := model.find_child(
+		"AnimationPlayer",
+		true,
+		false
+	) as AnimationPlayer
+
+	if animation_player == null:
+		push_warning("No se encontró AnimationPlayer en el modelo")
+		return
+
+	print("AnimationPlayer path: ", animation_player.get_path())
+
+	animation_tree.anim_player = animation_player.get_path()
+	animation_tree.active = true
+
+
+	
 
 
 func _physics_process(delta: float) -> void:

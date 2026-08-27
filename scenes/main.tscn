@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cdb6yxoqrx3ca" path="res://models/bar_mat.glb" id="13_jkv2x"]
 [ext_resource type="PackedScene" path="res://scenes/bebida_actual.tscn" id="14_jbj1t"]
 [ext_resource type="Script" uid="uid://4nm70plifl2y" path="res://scenes/crowd_control.gd" id="15_jbj1t"]
-[ext_resource type="PackedScene" uid="uid://d22yvdpvr717j" path="res://scenes/customers/Customer1.tscn" id="15_muem4"]
+[ext_resource type="PackedScene" uid="uid://bruv5o2mmu53i" path="res://scenes/customers/RandomizedCharacter.tscn" id="15_muem4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bg1kw"]
 size = Vector3(0.61920166, 1.0556641, 5.998291)

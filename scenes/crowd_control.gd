@@ -13,6 +13,8 @@ func _ready() -> void:
 	_update_unused_seats()
 
 	spawn_customer()
+	spawn_customer()
+	spawn_customer()
 
 
 func _get_tables() -> void:
