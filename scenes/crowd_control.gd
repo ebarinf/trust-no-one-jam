@@ -15,6 +15,7 @@ func _ready() -> void:
 	spawn_customer()
 	spawn_customer()
 	spawn_customer()
+	
 
 
 func _get_tables() -> void:

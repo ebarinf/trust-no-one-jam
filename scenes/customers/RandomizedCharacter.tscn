@@ -19,6 +19,15 @@
 [ext_resource type="PackedScene" uid="uid://q0sbcnyt7ek4" path="res://models/strong-man-b-1.glb" id="15_dayv4"]
 [ext_resource type="PackedScene" uid="uid://bottfnunfv23a" path="res://models/strong-man-c-1.glb" id="16_6foic"]
 [ext_resource type="PackedScene" uid="uid://byna7x8421sjf" path="res://models/strong-woman-a-1.glb" id="17_hhfwg"]
+[ext_resource type="Texture2D" uid="uid://cinlqe3nj2iwk" path="res://textures/palette1.png" id="20_ef3gj"]
+[ext_resource type="Texture2D" uid="uid://dxxpkv2eldn82" path="res://textures/palette2.png" id="21_dayv4"]
+[ext_resource type="Texture2D" uid="uid://cer6roxyrbbk7" path="res://textures/palette3.png" id="22_6foic"]
+[ext_resource type="Texture2D" uid="uid://ck20p51sx65on" path="res://textures/palette4.png" id="23_hhfwg"]
+[ext_resource type="Texture2D" uid="uid://vogiv65xhj6d" path="res://textures/palette5.png" id="24_gbw73"]
+[ext_resource type="Texture2D" uid="uid://dwbelhmd5i6qh" path="res://textures/palette6.png" id="25_kn5o3"]
+[ext_resource type="Texture2D" uid="uid://b0i4oj3wxagps" path="res://textures/palette7.png" id="26_2pamy"]
+[ext_resource type="Texture2D" uid="uid://cvj5bwmbbbsra" path="res://textures/palette8.png" id="27_g044y"]
+[ext_resource type="Texture2D" uid="uid://bhkw56ic8ef3y" path="res://textures/palette9.png" id="28_w7525"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_714fh"]
 
@@ -102,6 +111,7 @@ size = Vector3(0.5644531, 0.37402344, 1)
 [node name="RandomClient" type="CharacterBody3D" unique_id=373415144 groups=["npc"]]
 script = ExtResource("1_wtyj3")
 character_models = Array[PackedScene]([ExtResource("2_8ty35"), ExtResource("2_tkp40"), ExtResource("4_e0gg7"), ExtResource("5_pew7q"), ExtResource("6_eb2s6"), ExtResource("7_hmc10"), ExtResource("8_artid"), ExtResource("9_3ee03"), ExtResource("10_68sjn"), ExtResource("11_gj2hk"), ExtResource("3_uu584"), ExtResource("13_pc47y"), ExtResource("14_ef3gj"), ExtResource("15_dayv4"), ExtResource("16_6foic"), ExtResource("17_hhfwg"), ExtResource("4_tkp40"), ExtResource("4_ohfk8")])
+character_textures = Array[Texture2D]([ExtResource("20_ef3gj"), ExtResource("21_dayv4"), ExtResource("22_6foic"), ExtResource("23_hhfwg"), ExtResource("24_gbw73"), ExtResource("25_kn5o3"), ExtResource("26_2pamy"), ExtResource("27_g044y"), ExtResource("28_w7525")])
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=328778503]
 tree_root = SubResource("AnimationNodeBlendTree_usg23")
