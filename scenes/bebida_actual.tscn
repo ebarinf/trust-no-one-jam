@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://blq3upnmxjipm"]
+
+[ext_resource type="Script" uid="uid://cnpcsr30r5836" path="res://scenes/bebida_actual.gd" id="1_5pbun"]
+
+[node name="BebidaActual" type="Node3D" unique_id=1146606957]
+script = ExtResource("1_5pbun")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=888425242]

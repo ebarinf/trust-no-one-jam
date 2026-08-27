@@ -15,6 +15,7 @@
 [ext_resource type="ArrayMesh" uid="uid://b7qe6ucg6767u" path="res://models/CopaMartini/CopaMartini.obj" id="8_choun"]
 [ext_resource type="PackedScene" uid="uid://d3gyiehh7oy4n" path="res://scenes/base_glass.tscn" id="9_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://cdb6yxoqrx3ca" path="res://models/bar_mat.glb" id="13_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://blq3upnmxjipm" path="res://scenes/bebida_actual.tscn" id="14_jbj1t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bg1kw"]
 size = Vector3(0.61920166, 1.0556641, 5.998291)
@@ -103,10 +104,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.495123, 0, 0)
 [node name="bartender" type="Node3D" parent="PlayerPOV" unique_id=1006972906]
 transform = Transform3D(0.99652153, -0.08333577, 0, 0.08333577, 0.99652153, 0, 0, 0, 1, 1.3063002, 1.6, 0)
 
-[node name="PlayerCamera" type="Camera3D" parent="PlayerPOV/bartender" unique_id=815872212]
+[node name="PlayerCamera" type="Camera3D" parent="PlayerPOV/bartender" unique_id=815872212 node_paths=PackedStringArray("bebida_actual")]
 transform = Transform3D(-4.355934e-08, -0.36696872, 0.9302333, 3.6427223e-09, 0.9302333, 0.36696872, -1, 1.9373497e-08, -3.9183583e-08, 0.22370434, 0.44572967, 4.6582613e-08)
 keep_aspect = 0
 script = ExtResource("1_trceg")
+bebida_actual = NodePath("../bar_mat/BebidaActual")
+
+[node name="bar_mat" parent="PlayerPOV/bartender" unique_id=1585013378 instance=ExtResource("13_jkv2x")]
+transform = Transform3D(0.99652153, 0.08333577, 0, -0.08333577, 0.99652153, 0, 0, 0, 1, -0.96985483, -0.4611162, -0.019144654)
+
+[node name="glass_position" type="Marker3D" parent="PlayerPOV/bartender/bar_mat" unique_id=2143766517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01726973, 0)
+
+[node name="BebidaActual" parent="PlayerPOV/bartender/bar_mat" unique_id=1146606957 node_paths=PackedStringArray("glass_position") instance=ExtResource("14_jbj1t")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+glass_position = NodePath("../glass_position")
+whisky_glass_mesh = ExtResource("6_tipki")
+martini_glass_mesh = ExtResource("8_choun")
+long_glass_mesh = ExtResource("7_85g3d")
 
 [node name="Counter" type="StaticBody3D" parent="PlayerPOV" unique_id=422678845]
 
@@ -176,6 +191,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22263622, 1.0720592, -0.948
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0.013478577)
 script = ExtResource("4_eb6dy")
 outline_material = ExtResource("5_trceg")
+item_type = "glass"
+item_name = "long_glass"
 
 [node name="HoverArea" type="Area3D" parent="PlayerPOV/Counter/Bottles/Glasses/long_glass" unique_id=1935441510]
 
@@ -192,23 +209,22 @@ mesh = ExtResource("7_85g3d")
 
 [node name="whisky_glass" parent="PlayerPOV/Counter/Bottles/Glasses" unique_id=537109468 instance=ExtResource("9_a8y0u")]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, -0.041083813, 0, 0.16557103)
+item_type = "glass"
+item_name = "whisky_glass"
 
 [node name="MeshInstance3D" parent="PlayerPOV/Counter/Bottles/Glasses/whisky_glass" index="2" unique_id=929269805]
 mesh = ExtResource("6_tipki")
 
 [node name="martini_glass" parent="PlayerPOV/Counter/Bottles/Glasses" unique_id=1565792282 instance=ExtResource("9_a8y0u")]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.20040226, 0, -0.023279786)
+item_type = "glass"
+item_name = "martini_glass"
 
 [node name="MeshInstance3D" parent="PlayerPOV/Counter/Bottles/Glasses/martini_glass" index="2" unique_id=929269805]
 mesh = ExtResource("8_choun")
 
 [node name="jigger" parent="PlayerPOV/Counter" unique_id=88108142 instance=ExtResource("1_choun")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.53190327, 1.0886642, -0.6660662)
-
-[node name="Glasses" type="Node3D" parent="PlayerPOV/Counter" unique_id=796517808]
-
-[node name="bar_mat" parent="PlayerPOV/Counter" unique_id=1585013378 instance=ExtResource("13_jkv2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37824583, 1.0596641, -0.019144654)
 
 [node name="Scenario" type="Node3D" parent="." unique_id=991183983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3129382, 0)

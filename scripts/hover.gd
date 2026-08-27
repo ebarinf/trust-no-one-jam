@@ -1,6 +1,7 @@
 extends Camera3D
 
 var current_hovered: Highlightable = null
+@export var bebida_actual: Node3D
 
 func _process(_delta):
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -29,4 +30,15 @@ func _process(_delta):
 			current_hovered.set_highlighted(false)
 		if hit_highlightable:
 			hit_highlightable.set_highlighted(true)
+			if not hit_highlightable.clicked.is_connected(_on_item_clicked):
+				hit_highlightable.clicked.connect(_on_item_clicked)
 		current_hovered = hit_highlightable
+
+func _unhandled_input(event: InputEvent):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if current_hovered:
+				current_hovered.trigger_click()
+
+func _on_item_clicked(item: Highlightable):
+	bebida_actual.handle_click(item)
