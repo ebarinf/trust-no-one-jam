@@ -10,7 +10,6 @@ var used_areas: Array[Area3D] = []
 func _ready() -> void:
 	areas = [
 		$seat1,
-		$seat2,
 		$seat3,
 		$seat4
 	]

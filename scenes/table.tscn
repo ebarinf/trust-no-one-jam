@@ -53,16 +53,5 @@ shape = SubResource("BoxShape3D_usg23")
 [node name="Marker3D" type="Marker3D" parent="seat3" unique_id=119147972]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005384207, -0.39036083, -0.971864)
 
-[node name="seat2" type="Area3D" parent="." unique_id=1638883652]
-transform = Transform3D(0.004652559, 0, -0.99998915, 0, 1, 0, 0.99998915, 0, 0.004652559, 0, 0, 0.0068178177)
-script = ExtResource("3_x8522")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="seat2" unique_id=1470988156]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00039672852, -0.19144297, -0.60534394)
-shape = SubResource("BoxShape3D_usg23")
-
-[node name="Marker3D" type="Marker3D" parent="seat2" unique_id=2049726730]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005384207, -0.39036083, -0.971864)
-
 [node name="LookingPoint" type="Marker3D" parent="." unique_id=965490318]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2746582, 0.6989746, 0)
