@@ -6,9 +6,15 @@ extends StaticBody3D
 var used_areas: Array[Area3D] = []
 
 
-func _ready() -> void:
-	unused_areas = areas.duplicate()
 
+func _ready() -> void:
+	areas = [
+		$seat1,
+		$seat2,
+		$seat3,
+		$seat4
+	]
+	unused_areas = areas.duplicate()
 	for area in areas:
 		area.body_entered.connect(_on_area_body_entered.bind(area))
 		area.body_exited.connect(_on_area_body_exited.bind(area))

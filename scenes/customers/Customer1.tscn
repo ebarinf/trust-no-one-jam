@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d22yvdpvr717j"]
 
-[ext_resource type="Script" uid="uid://dwt1cws3yk5vi" path="res://scripts/customer.gd" id="1_85bh7"]
-[ext_resource type="PackedScene" uid="uid://boaaxkbrahtgj" path="res://models/fat-man-b-1.glb" id="1_714fh"]
+[ext_resource type="Script" uid="uid://dwt1cws3yk5vi" path="res://scripts/customer.gd" id="1_acdls"]
+[ext_resource type="PackedScene" uid="uid://boaaxkbrahtgj" path="res://models/fat-man-b-1.glb" id="2_hj78q"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_714fh"]
 
@@ -79,10 +79,13 @@ node_connections = [&"output", 0, &"SUS", &"WALK", 0, &"Animation", &"WALK", 1, 
 radius = 0.14208984
 height = 1.4242096
 
-[node name="Customer1" type="CharacterBody3D" unique_id=373415144 groups=["npc"]]
-script = ExtResource("1_85bh7")
+[sub_resource type="BoxShape3D" id="BoxShape3D_acdls"]
+size = Vector3(0.5644531, 0.37402344, 1)
 
-[node name="fat-man-b-1" parent="." unique_id=1771916504 instance=ExtResource("1_714fh")]
+[node name="Customer1" type="CharacterBody3D" unique_id=373415144 groups=["npc"]]
+script = ExtResource("1_acdls")
+
+[node name="fat-man-b-1" parent="." unique_id=1771916504 instance=ExtResource("2_hj78q")]
 
 [node name="Skeleton3D" parent="fat-man-b-1/fat-man-b" parent_id_path=PackedInt32Array(1771916504, 852789954) index="0" unique_id=247560021]
 bones/0/position = Vector3(0, 0.7034752, 0)
@@ -126,5 +129,11 @@ parameters/SUS/request = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=679114591 groups=["npc"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0952238, 0)
 shape = SubResource("CapsuleShape3D_usg23")
+
+[node name="SeatDetection" type="Area3D" parent="." unique_id=1995661268]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SeatDetection" unique_id=1882739491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0034179688, 0.26346773, 0.46150017)
+shape = SubResource("BoxShape3D_acdls")
 
 [editable path="fat-man-b-1"]

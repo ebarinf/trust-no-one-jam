@@ -14,7 +14,8 @@
 [ext_resource type="ArrayMesh" uid="uid://b7qe6ucg6767u" path="res://models/CopaMartini/CopaMartini.obj" id="8_choun"]
 [ext_resource type="PackedScene" uid="uid://d3gyiehh7oy4n" path="res://scenes/base_glass.tscn" id="9_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://cdb6yxoqrx3ca" path="res://models/bar_mat.glb" id="13_jkv2x"]
-[ext_resource type="PackedScene" uid="uid://d22yvdpvr717j" path="res://models/customers/Customer1.tscn" id="15_jkv2x"]
+[ext_resource type="Script" uid="uid://4nm70plifl2y" path="res://scenes/crowd_control.gd" id="15_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://d22yvdpvr717j" path="res://scenes/customers/Customer1.tscn" id="15_muem4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bg1kw"]
 size = Vector3(0.61920166, 1.0556641, 5.998291)
@@ -243,11 +244,31 @@ shape = SubResource("BoxShape3D_usg23")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1200153462]
 environment = SubResource("Environment_0fbwq")
 
-[node name="Customer1" parent="." unique_id=373415144 instance=ExtResource("15_jkv2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1397429, 0.0583753, -1.2859714)
+[node name="Tables" type="Node3D" parent="." unique_id=1549218661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.31822538)
+script = ExtResource("15_jbj1t")
+customer_scene = ExtResource("15_muem4")
 
-[node name="Table5" parent="." unique_id=1550585246 instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.186173, 0.48513454, -0.0752784)
+[node name="Table1" parent="Tables" unique_id=1550585246 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0485406, 0.48513454, -0.0752784)
+
+[node name="Table6" parent="Tables" unique_id=1714302732 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.186173, 0.48513454, -0.48990822)
+
+[node name="Table2" parent="Tables" unique_id=1423773633 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6983991, 0.48513454, 3.1351538)
+
+[node name="Table3" parent="Tables" unique_id=1841033444 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.186173, 0.48513454, -4.2479186)
+
+[node name="Table4" parent="Tables" unique_id=210185719 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1459217, 0.48513454, -0.0752784)
+
+[node name="Table5" parent="Tables" unique_id=758993712 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.389227, 0.48513454, 2.5476484)
+
+[node name="CustomerSpawner" type="Marker3D" parent="Tables" unique_id=426223465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7315564, 0.87356997, -7.1205106)
 
 [editable path="PlayerPOV/Counter/bar_counter"]
 [editable path="PlayerPOV/Counter/Bottles/Glasses/whisky_glass"]
