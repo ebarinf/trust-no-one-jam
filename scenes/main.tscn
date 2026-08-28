@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c1tsfko368xiw" path="res://models/jigger.glb" id="1_choun"]
 [ext_resource type="PackedScene" uid="uid://nho7770bp1dp" path="res://models/bar_counter.glb" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://p6c7pov6don2" path="res://scripts/hover.gd" id="1_trceg"]
+[ext_resource type="Script" uid="uid://hqhhkinrvt7g" path="res://HUD.gd" id="2_0ld40"]
 [ext_resource type="Script" uid="uid://du04nvf1o1pg2" path="res://scripts/Highlightable.gd" id="4_eb6dy"]
 [ext_resource type="AudioStream" uid="uid://caxx52mb0jyit" path="res://audio/bottle_pick.mp3" id="5_a8y0u"]
 [ext_resource type="Material" uid="uid://cld0mnf48jgx5" path="res://materials/object_outline.tres" id="5_trceg"]
@@ -18,6 +19,12 @@
 [ext_resource type="Script" uid="uid://4nm70plifl2y" path="res://scenes/crowd_control.gd" id="15_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://bruv5o2mmu53i" path="res://scenes/customers/RandomizedCharacter.tscn" id="15_muem4"]
 [ext_resource type="Script" uid="uid://dq133i3tp6rmg" path="res://scripts/RecipeBuilder.gd" id="18_dp3eg"]
+
+[sub_resource type="Environment" id="Environment_0fbwq"]
+ambient_light_source = 2
+ambient_light_color = Color(0.30008712, 0.3652756, 0.55668336, 1)
+ambient_light_energy = 0.39
+glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvcgr"]
 resource_name = "GlassTraslucent"
@@ -158,13 +165,30 @@ stream_0/stream = ExtResource("5_a8y0u")
 [sub_resource type="BoxShape3D" id="BoxShape3D_usg23"]
 size = Vector3(20, 1, 20)
 
-[sub_resource type="Environment" id="Environment_0fbwq"]
-ambient_light_source = 2
-ambient_light_color = Color(0.30008712, 0.3652756, 0.55668336, 1)
-ambient_light_energy = 0.39
-glow_enabled = true
-
 [node name="Main" type="Node3D" unique_id=894062825]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1200153462]
+environment = SubResource("Environment_0fbwq")
+
+[node name="RecipeBuilder" type="Node" parent="." unique_id=1910573574]
+script = ExtResource("18_dp3eg")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=629438619 node_paths=PackedStringArray("recipe_builder", "recipe_label")]
+script = ExtResource("2_0ld40")
+recipe_builder = NodePath("../RecipeBuilder")
+recipe_label = NodePath("RecipeLabel")
+
+[node name="RecipeLabel" type="Label" parent="HUD" unique_id=2043595354]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -161.0
+offset_top = 14.0
+offset_right = -14.0
+offset_bottom = 93.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 2
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1084167413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.996089, 5.3309965, 0)
@@ -376,9 +400,6 @@ size = Vector3(20, 0.2, 20)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.387, -0.412, 0.005)
 shape = SubResource("BoxShape3D_usg23")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1200153462]
-environment = SubResource("Environment_0fbwq")
-
 [node name="Tables" type="Node3D" parent="." unique_id=1549218661]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.31822538)
 script = ExtResource("15_jbj1t")
@@ -401,9 +422,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6065803, 0.48513454, -2.472
 
 [node name="CustomerSpawner" type="Marker3D" parent="Tables" unique_id=426223465]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.680981, 0.87356997, -1.2768712)
-
-[node name="RecipeBuilder" type="Node" parent="." unique_id=1910573574]
-script = ExtResource("18_dp3eg")
 
 [editable path="PlayerPOV/Counter/bar_counter"]
 [editable path="PlayerPOV/Counter/Glasses/whisky_glass"]
