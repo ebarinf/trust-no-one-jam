@@ -11,7 +11,7 @@ height = 1.2856445
 [sub_resource type="BoxShape3D" id="BoxShape3D_usg23"]
 size = Vector3(0.66822815, 0.44873047, 0.8392334)
 
-[node name="Table5" type="StaticBody3D" unique_id=1550585246]
+[node name="Table" type="StaticBody3D" unique_id=1550585246]
 script = ExtResource("1_eotx8")
 
 [node name="LowPolyTable" parent="." unique_id=802197931 instance=ExtResource("1_02ppr")]
