@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://4nm70plifl2y" path="res://scenes/crowd_control.gd" id="15_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://bruv5o2mmu53i" path="res://scenes/customers/RandomizedCharacter.tscn" id="15_muem4"]
 [ext_resource type="Script" uid="uid://dq133i3tp6rmg" path="res://scripts/RecipeBuilder.gd" id="18_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://vccfyp7pkpvl" path="res://models/balde_hielo.glb" id="20_gqmmt"]
 
 [sub_resource type="Environment" id="Environment_0fbwq"]
 ambient_light_source = 2
@@ -147,7 +148,7 @@ size = Vector3(0.07763672, 0.1025585, 0.082402706)
 size = Vector3(0.61920166, 1.0556641, 5.998291)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fbwq"]
-size = Vector3(1.4206238, 4.4107056, 1.495369)
+size = Vector3(1.4206238, 2.27314, 2.3167133)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jbj1t"]
 random_pitch = 1.0717734
@@ -212,7 +213,7 @@ jigger = NodePath("../Jigger")
 recipe_builder = NodePath("../../../RecipeBuilder")
 
 [node name="bar_mat" parent="PlayerPOV/bartender" unique_id=1585013378 instance=ExtResource("13_jkv2x")]
-transform = Transform3D(0.99652153, 0.08333577, 0, -0.08333577, 0.99652153, 0, 0, 0, 1, -0.96985483, -0.4611162, -0.019144654)
+transform = Transform3D(0.99652153, 0.08333577, 0, -0.08333577, 0.99652153, 0, 0, 0, 1, -0.90944767, -0.46616775, -0.019144654)
 
 [node name="glass_position" type="Marker3D" parent="PlayerPOV/bartender/bar_mat" unique_id=2143766517]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01726973, 0)
@@ -286,7 +287,7 @@ shape = SubResource("BoxShape3D_0fbwq")
 stream = SubResource("AudioStreamRandomizer_jbj1t")
 
 [node name="rum_bottle" parent="PlayerPOV/Counter/Bottles/rum_bottle" unique_id=1606183833 instance=ExtResource("11_dp3eg")]
-transform = Transform3D(-1.1471529, 0, 1.638304, 0, 2, 0, -1.638304, 0, -1.1471529, 0, -1.1041374, 0)
+transform = Transform3D(-1.1471529, 0, 1.6383039, 0, 2, 0, -1.6383039, 0, -1.1471529, 0, -0.877285, 0)
 
 [node name="martini_bottle" type="Node3D" parent="PlayerPOV/Counter/Bottles" unique_id=1556229483]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.19368744, 1.1389397, 0.54992694)
@@ -304,7 +305,7 @@ shape = SubResource("BoxShape3D_0fbwq")
 stream = SubResource("AudioStreamRandomizer_jbj1t")
 
 [node name="martini_bottle" parent="PlayerPOV/Counter/Bottles/martini_bottle" unique_id=1216466032 instance=ExtResource("12_dp3eg")]
-transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 0, -1.0649328, 1.6208768)
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 0, -0.8820553, 1.6208768)
 
 [node name="whisky_bottle" type="Node3D" parent="PlayerPOV/Counter/Bottles" unique_id=1210270903]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.2531829, 1.1383804, 0.97131574)
@@ -322,7 +323,7 @@ shape = SubResource("BoxShape3D_0fbwq")
 stream = SubResource("AudioStreamRandomizer_jbj1t")
 
 [node name="whiskey_bottle" parent="PlayerPOV/Counter/Bottles/whisky_bottle" unique_id=793315372 instance=ExtResource("12_muem4")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.9565716, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.9341154, 0)
 
 [node name="Glasses" type="Node3D" parent="PlayerPOV/Counter" unique_id=155153165]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22263622, 1.0551916, -0.9485356)
@@ -365,6 +366,20 @@ outline_width_override = 0.02
 
 [node name="MeshInstance3D" parent="PlayerPOV/Counter/Glasses/martini_glass" index="2" unique_id=2049107845]
 mesh = SubResource("ArrayMesh_dp3eg")
+
+[node name="balde_hielo" parent="PlayerPOV/Counter" unique_id=1795081470 instance=ExtResource("20_gqmmt")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.17148495, 1.1623183, -0.46622443)
+script = ExtResource("4_eb6dy")
+outline_material = ExtResource("5_trceg")
+
+[node name="HoverArea" type="Area3D" parent="PlayerPOV/Counter/balde_hielo" unique_id=1204045276]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerPOV/Counter/balde_hielo/HoverArea" unique_id=609532816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049476624, 0.0054502487, 0.08515215)
+shape = SubResource("BoxShape3D_0fbwq")
+
+[node name="SFXPlayer" type="AudioStreamPlayer3D" parent="PlayerPOV/Counter/balde_hielo" unique_id=726739325]
+stream = SubResource("AudioStreamRandomizer_jbj1t")
 
 [node name="Scenario" type="Node3D" parent="." unique_id=991183983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3129382, 0)
