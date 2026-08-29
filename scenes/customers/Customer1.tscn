@@ -15,13 +15,19 @@ animation = &"CARRY"
 animation = &"DRINK"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b6o3a"]
-animation = &"DRUG"
+animation = &"DRUG_F"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j1frt"]
 animation = &"SUS"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6a6il"]
 animation = &"ASDASD"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_acdls"]
+animation = &"DRUG_L"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hj78q"]
+animation = &"DRUG_R"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_714fh"]
 
@@ -30,6 +36,10 @@ animation = &"ASDASD"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_4iw7e"]
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_nn82l"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ia5co"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_mvj0v"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_wbeyp"]
 
@@ -41,8 +51,8 @@ animation = &"ASDASD"
 animation = &"WALK"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_usg23"]
-graph_offset = Vector2(-1062.043, -250.93799)
-nodes/output/position = Vector2(790, 40)
+graph_offset = Vector2(-169.63025, -225.68582)
+nodes/output/position = Vector2(1630, -180)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_714fh")
 nodes/Animation/position = Vector2(-1190, -190)
 nodes/walk/node = SubResource("AnimationNodeAnimation_wbeyp")
@@ -60,7 +70,7 @@ nodes/SEAT/position = Vector2(-770, -180)
 "nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_b6o3a")
 "nodes/Animation 5/position" = Vector2(0, 220)
 "nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_j1frt")
-"nodes/Animation 6/position" = Vector2(525.5161, 434.51752)
+"nodes/Animation 6/position" = Vector2(1370, 210)
 "nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_6a6il")
 "nodes/Animation 7/position" = Vector2(-660, 340)
 nodes/CARRY/node = SubResource("AnimationNodeBlend2_lcl8o")
@@ -69,11 +79,19 @@ nodes/ASD/node = SubResource("AnimationNodeBlend2_714fh")
 nodes/ASD/position = Vector2(-300, -190)
 nodes/DRINK/node = SubResource("AnimationNodeOneShot_4iw7e")
 nodes/DRINK/position = Vector2(-30, -160)
-nodes/DRUG/node = SubResource("AnimationNodeOneShot_nn82l")
-nodes/DRUG/position = Vector2(240, -150)
+nodes/DRUG_F/node = SubResource("AnimationNodeOneShot_nn82l")
+nodes/DRUG_F/position = Vector2(240, -150)
 nodes/SUS/node = SubResource("AnimationNodeOneShot_ijx78")
-nodes/SUS/position = Vector2(546.20715, 38.20765)
-node_connections = [&"output", 0, &"SUS", &"WALK", 0, &"Animation", &"WALK", 1, &"walk", &"SEAT", 0, &"WALK", &"SEAT", 1, &"Animation 2", &"CARRY", 0, &"SEAT", &"CARRY", 1, &"Animation 3", &"ASD", 0, &"CARRY", &"ASD", 1, &"Animation 7", &"DRINK", 0, &"ASD", &"DRINK", 1, &"Animation 4", &"DRUG", 0, &"DRINK", &"DRUG", 1, &"Animation 5", &"SUS", 0, &"DRUG", &"SUS", 1, &"Animation 6"]
+nodes/SUS/position = Vector2(1390, -180)
+"nodes/Animation 8/node" = SubResource("AnimationNodeAnimation_acdls")
+"nodes/Animation 8/position" = Vector2(540, 300)
+"nodes/Animation 9/node" = SubResource("AnimationNodeAnimation_hj78q")
+"nodes/Animation 9/position" = Vector2(767.55597, 303.79968)
+nodes/DRUG_L/node = SubResource("AnimationNodeOneShot_ia5co")
+nodes/DRUG_L/position = Vector2(590, -160)
+nodes/DRUG_R/node = SubResource("AnimationNodeOneShot_mvj0v")
+nodes/DRUG_R/position = Vector2(1000, -10)
+node_connections = [&"output", 0, &"SUS", &"WALK", 0, &"Animation", &"WALK", 1, &"walk", &"SEAT", 0, &"WALK", &"SEAT", 1, &"Animation 2", &"CARRY", 0, &"SEAT", &"CARRY", 1, &"Animation 3", &"ASD", 0, &"CARRY", &"ASD", 1, &"Animation 7", &"DRINK", 0, &"ASD", &"DRINK", 1, &"Animation 4", &"DRUG_F", 0, &"DRINK", &"DRUG_F", 1, &"Animation 5", &"SUS", 0, &"DRUG_R", &"SUS", 1, &"Animation 6", &"DRUG_L", 0, &"DRUG_F", &"DRUG_L", 1, &"Animation 8", &"DRUG_R", 0, &"DRUG_L", &"DRUG_R", 1, &"Animation 9"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_usg23"]
 radius = 0.14208984
@@ -87,7 +105,7 @@ script = ExtResource("1_acdls")
 
 [node name="fat-man-b-1" parent="." unique_id=1771916504 instance=ExtResource("2_hj78q")]
 
-[node name="Skeleton3D" parent="fat-man-b-1/fat-man-b" parent_id_path=PackedInt32Array(1771916504, 852789954) index="0" unique_id=247560021]
+[node name="Skeleton3D" parent="fat-man-b-1/fat-man-b" parent_id_path=PackedInt32Array(1771916504, 206164287) index="0" unique_id=959633773]
 bones/0/position = Vector3(-1.390328e-07, 0.14683187, 0.0019244307)
 bones/0/rotation = Quaternion(-0.70827264, 8.4154486e-08, -8.443264e-08, 0.70593905)
 bones/1/rotation = Quaternion(0.081011616, 1.6953305e-14, -4.8596665e-15, 0.99671316)
@@ -119,12 +137,18 @@ parameters/ASD/blend_amount = 0.0
 parameters/DRINK/active = false
 parameters/DRINK/internal_active = false
 parameters/DRINK/request = 0
-parameters/DRUG/active = false
-parameters/DRUG/internal_active = false
-parameters/DRUG/request = 0
+parameters/DRUG_F/active = false
+parameters/DRUG_F/internal_active = false
+parameters/DRUG_F/request = 0
 parameters/SUS/active = false
 parameters/SUS/internal_active = false
 parameters/SUS/request = 0
+parameters/DRUG_L/active = false
+parameters/DRUG_L/internal_active = false
+parameters/DRUG_L/request = 0
+parameters/DRUG_R/active = false
+parameters/DRUG_R/internal_active = false
+parameters/DRUG_R/request = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=679114591 groups=["npc"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0952238, 0)
